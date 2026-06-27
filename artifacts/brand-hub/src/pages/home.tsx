@@ -53,11 +53,11 @@ export default function Home() {
             <div className="absolute -top-4 -right-4 bg-[#00CC44] text-white font-display px-4 py-1 rounded-full shadow-md -rotate-6">
               Channel Banner
             </div>
-            <div className="aspect-[16/9] bg-muted rounded-2xl overflow-hidden mb-6 border-4 border-dashed border-accent/20">
+            <div className="w-full bg-muted rounded-2xl overflow-hidden mb-6 border-4 border-dashed border-accent/20">
               <img 
                 src="/banner.png" 
                 alt="Bright Little Stories Banner" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto block hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="1280" height="720" fill="%2300B4FF"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="bold" fill="%23FFFFFF">Banner Placeholder</text></svg>'
                 }}

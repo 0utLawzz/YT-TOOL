@@ -7,6 +7,7 @@ import fs from "fs";
 import os from "os";
 
 const execFileAsync = promisify(execFile);
+const FFMPEG_MAX_BUFFER = 50 * 1024 * 1024;
 const router: IRouter = Router();
 
 const upload = multer({
@@ -53,9 +54,12 @@ router.post("/video/remove-logo", upload.single("video"), async (req, res) => {
       "-y",
       "-i", inputPath,
       "-vf", `delogo=x=${x}:y=${y}:w=${w}:h=${h}`,
+      "-c:v", "libx264",
+      "-preset", "fast",
+      "-crf", "23",
       "-c:a", "copy",
       outputPath,
-    ]);
+    ], { maxBuffer: FFMPEG_MAX_BUFFER });
 
     const originalName = path.basename(req.file.originalname, ext);
     const downloadName = `${originalName}-no-logo${ext}`;
@@ -93,7 +97,7 @@ router.post("/video/probe", upload.single("video"), async (req, res) => {
       "-print_format", "json",
       "-show_streams",
       req.file.path,
-    ]);
+    ], { maxBuffer: FFMPEG_MAX_BUFFER });
     const info = JSON.parse(stdout);
     const video = info.streams?.find((s: { codec_type: string }) => s.codec_type === "video");
     fs.unlink(req.file.path, () => {});
