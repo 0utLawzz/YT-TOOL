@@ -1,6 +1,6 @@
 import { useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
-import { Image, Palette, Rocket, Star } from "lucide-react";
+import { Image, Palette, Rocket, Star, Scissors } from "lucide-react";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -9,6 +9,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/", label: "Logo & Banner", icon: Image, color: "text-primary", bg: "bg-primary/10" },
     { href: "/thumbnail-generator", label: "Thumbnail Maker", icon: Palette, color: "text-accent", bg: "bg-accent/10" },
     { href: "/channel-tips", label: "Channel Tips", icon: Rocket, color: "text-[#9B00FF]", bg: "bg-[#9B00FF]/10" },
+    { href: "/logo-remover", label: "Logo Remover", icon: Scissors, color: "text-[#00CC44]", bg: "bg-[#00CC44]/10" },
   ];
 
   return (

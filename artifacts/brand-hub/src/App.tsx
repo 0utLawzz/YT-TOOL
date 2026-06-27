@@ -6,6 +6,7 @@ import { Layout } from "@/components/layout";
 import Home from "@/pages/home";
 import ThumbnailGenerator from "@/pages/thumbnail-generator";
 import ChannelTips from "@/pages/channel-tips";
+import LogoRemover from "@/pages/logo-remover";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/thumbnail-generator" component={ThumbnailGenerator} />
         <Route path="/channel-tips" component={ChannelTips} />
+        <Route path="/logo-remover" component={LogoRemover} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
